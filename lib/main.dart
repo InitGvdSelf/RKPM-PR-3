@@ -5,6 +5,8 @@ import 'outlined_button_example.dart';
 import 'text_button_example.dart';
 import 'column_example.dart';
 import 'row_example.dart';
+import 'container_example.dart';
+import 'sizedBox_exemple.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,7 +35,11 @@ class MyApp extends StatelessWidget {
                 SizedBox(height: 30),
                 ColumnExample(),
                 SizedBox(height: 30),
-                RowExample(), // ✅ добавили пример Row
+                RowExample(),
+                SizedBox(height: 30),
+                ContainerExample(),
+                SizedBox(height: 30),
+                SizedBoxExample(),
               ],
             ),
           ),
