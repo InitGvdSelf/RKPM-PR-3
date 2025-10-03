@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_3/sizedbox_example.dart';
 import 'text_example.dart';
 import 'button_example.dart';
 import 'outlined_button_example.dart';
@@ -6,7 +7,7 @@ import 'text_button_example.dart';
 import 'column_example.dart';
 import 'row_example.dart';
 import 'container_example.dart';
-import 'sizedBox_exemple.dart';
+import 'sizedbox_example.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,18 +28,12 @@ class MyApp extends StatelessWidget {
               children: [
                 TextExample(),
                 SizedBox(height: 30),
-                ButtonExample(),
-                SizedBox(height: 30),
-                OutlinedButtonExample(),
-                SizedBox(height: 30),
-                TextButtonExample(),
-                SizedBox(height: 30),
                 ColumnExample(),
                 SizedBox(height: 30),
                 RowExample(),
                 SizedBox(height: 30),
-                ContainerExample(),
-                SizedBox(height: 30),
+                //ContainerExample(),
+                //SizedBox(height: 30),
                 SizedBoxExample(),
               ],
             ),
