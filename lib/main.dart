@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'text_example.dart';
-import 'button_example.dart';
-import 'outlined_button_example.dart';
-import 'text_button_example.dart';
-import 'column_example.dart';
-import 'row_example.dart';
-import 'container_example.dart';
-import 'sizedbox_example.dart';
-import 'padding_example.dart';
+import 'profile_screen.dart';
+import 'contacts_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,25 +11,40 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(title: Text('Пример Flutter виджетов')),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextExample(),
-              SizedBox(height: 30),
-              ColumnExample(),
-              SizedBox(height: 30),
-              //RowExample(),
-              //SizedBox(height: 30),
-              //ContainerExample(),
-              //SizedBox(height: 30),
-              SizedBoxExample(),
-              SizedBox(height: 30),
-              PaddingExample(),
-            ],
-          ),
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Главное меню')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileScreen()),
+                );
+              },
+              child: Text('Профиль'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ContactsScreen()),
+                );
+              },
+              child: Text('Контакты'),
+            ),
+          ],
         ),
       ),
     );
