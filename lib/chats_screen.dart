@@ -41,39 +41,60 @@ class _ChatsScreenState extends State<ChatsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final sidebar = Container(
+      width: 160,
+      padding: EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade50,
+        border: Border(right: BorderSide(color: Colors.grey.shade300)),
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(child: Text('Чаты', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600))),
+              TextButton(onPressed: addChat, child: Text('Добавить')),
+            ],
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: chats.length,
+              itemBuilder: (context, i) {
+                final c = chats[i];
+                return ListTile(
+                  title: Text(c),
+                  selected: c == current,
+                  onTap: () => setState(() => current = c),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+
     final list = messages[current] ?? [];
+
     return Scaffold(
       appBar: AppBar(title: Text('Чаты')),
       body: Row(
         children: [
-          Container(
-            width: 140,
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: chats.length,
-                    itemBuilder: (context, i) {
-                      final c = chats[i];
-                      return ListTile(
-                        title: Text(c),
-                        selected: c == current,
-                        onTap: () => setState(() => current = c),
-                      );
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8),
-                  child: OutlinedButton(onPressed: addChat, child: Text('Новый чат')),
-                ),
-              ],
-            ),
-          ),
-          VerticalDivider(width: 1),
+          sidebar,
           Expanded(
             child: Column(
               children: [
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(12),
+                  color: Colors.lightBlue.shade50,
+                  child: Row(
+                    children: [
+                      Text(current, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                      Spacer(),
+                      OutlinedButton(onPressed: () {}, child: Text('Поиск')),
+                    ],
+                  ),
+                ),
                 Expanded(
                   child: ListView.builder(
                     padding: EdgeInsets.all(12),
